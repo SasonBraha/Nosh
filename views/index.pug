@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+html(lang="he" dir="rtl")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description" content="שרשראות ייחודיות בעבודת יד")
+    title Nosh - שרשראות ייחודיות בעבודת יד
+    script(defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js")
+    link(rel="shourtcut icon" href="https://instagram.ftlv6-1.fna.fbcdn.net/vp/d2af2104a1b196022f230c79499fb189/5B30B68C/t51.2885-19/s150x150/28766900_427160087739860_8579948720022355968_n.jpg")
+    link(rel="stylesheet" href="/css/index.css")
+    
+  body
+    .overlay
+
+    header.header
+      .header__logo= config.logoText
+      .header__social: a(href="https://www.instagram.com/nosh_jewelry/" target="_blank"): i.fab.fa-instagram
+    
+    section.hero
+      .container
+        .hero__header.fade-on-scroll
+          h1
+            span.hero__header--primary= config.indexHeader
+            span.hero__header--sub
+        
+        .hero__explore-box.fade-on-scroll 
+          a(href="#products").hero__explore-btn Explore
+    
+    .container
+      section.products#products
+        each product, i in products
+          .product(
+            data-name=product.name,
+            data-images=product.images, 
+            data-price=product.price, 
+            data-desc=product.desc, 
+            data-id=product._id)
+            img.product__img(src=product.images[0] alt=product.name)
+            .product__name=product.name
+            .product__price= `₪${product.price}`
+
+        img.hidden  
+
+  .toast-container
+
+  script(src="/js/vendors/typed.js")
+  script(src="/js/vendors/rellax.js")
+  script(src="/js/vendors/scroll.js")
+  script(src="/js/global.js")
+  script(src="/js/index.js")
+  script.
+    // Init Typed
+    const subHeaderValue = "#{config.indexDesc}";
+    const typed = new Typed('.hero__header--sub', {
+      strings: [subHeaderValue],
+      typeSpeed: 35,
+      typeDelay: 1000,
+      showCursor: false
+    });
+
+    

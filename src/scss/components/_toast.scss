@@ -1,0 +1,47 @@
+.toast-container {
+  position: fixed;
+  width: 300px;
+  z-index: 5;
+  right: 20px;
+  bottom: 0;
+
+  .toast {
+    margin-bottom: 30px;
+    background: white;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    animation: fadeOut 2s;
+    animation-delay: 3s;
+
+    &.err { 
+      border-right: 4px solid $err;
+      color: $err;
+    }
+
+    &.success {
+      border-right: 4px solid $success;
+      color: $success;
+    }
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

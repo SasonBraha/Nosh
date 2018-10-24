@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+html(lang="he" dir="rtl")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="robots", content="noindex")
+    title Nosh - התחברות
+    script(defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js")
+    link(rel="shourtcut icon" href="https://instagram.ftlv6-1.fna.fbcdn.net/vp/d2af2104a1b196022f230c79499fb189/5B30B68C/t51.2885-19/s150x150/28766900_427160087739860_8579948720022355968_n.jpg")
+    link(rel="stylesheet" href="/css/login.css")
+
+  body
+    header
+      .logo Nosh
+      .social: a(href="https://www.instagram.com/nosh_jewelry/" target="_blank"): i.fab.fa-instagram
+
+    .wrapper
+      .form-container
+        .header
+          i.fas.fa-user-circle.fa-5x
+          h3 התחברות
+
+        form(name="login")
+          .row
+            input(type="text" name="username" id="username" required)
+            label.text-label(for="username") שם משתמש
+            i.fa.fa-user.icon
+
+          .row
+            input(type="password" name="password"  id="password" autocomplete="new-password" required)
+            label.text-label(for="password") סיסמה
+            i.fa.fa-lock-open.icon
+
+          button(type="submit" formnovalidate) התחברות
+    
+    .toast-container
+    
+    
+    script.
+      'use strict';
+      function toast(cls, msg) {
+        const toastContainer = document.querySelector('.toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${cls}`;
+        toast.innerText = msg;
+        toastContainer.appendChild(toast);        
+        setTimeout(() => toast.remove(), 4500);
+      }
+
+      const loginForm = document.forms.login;
+      loginForm.onsubmit = e => {
+        e.preventDefault();
+        const username = loginForm.querySelector('#username').value.trim();
+        const password = loginForm.querySelector('#password').value.trim();
+        if (!username.length || !password.length) {
+          toast('err', 'עלייך להזין שם משתמש וסיסמה על מנת להתחבר')
+        } else {
+          fetch('/login', {
+            method: 'post',
+            credentials: 'same-origin',
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-type': 'application/json'
+            },
+            body: JSON.stringify({username: username, password: password})
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.status !== 200) {
+              toast('err', data.resMsg);
+            } else {
+              window.location.pathname = data.resMsg;
+            }
+          });
+        }
+      }

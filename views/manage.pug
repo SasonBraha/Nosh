@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+html(lang="he" dir="rtl")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="robots", content="noindex")
+    title פאנל ניהול - Nosh
+    script(defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js")
+    link(rel="shourtcut icon" href="https://instagram.ftlv6-1.fna.fbcdn.net/vp/d2af2104a1b196022f230c79499fb189/5B30B68C/t51.2885-19/s150x150/28766900_427160087739860_8579948720022355968_n.jpg")
+    link(rel="stylesheet" href="/css/manage.css")
+  body
+    .container-grid
+      nav.nav
+        .nav__user-info
+          img.nav__profile-img(src=user.avatar)
+          .nav__logged-as ברוכה הבאה, #{user.username}
+
+        ul.nav__menu
+          li#config
+            i.fas.fa-cog
+            | &nbsp; הגדרות
+          li#products 
+            i.fas.fa-gem
+            | &nbsp; ניהול מוצרים
+          li#orders 
+            i.fas.fa-envelope-open
+            | &nbsp; ניהול הזמנות
+          li#users 
+            i.fas.fa-users
+            | &nbsp; ניהול משתמשים
+
+      .view
+
+      .modal
+        .alert
+          .close: i.fa.fa-times
+
+      .lightbox
+        span.close-btn &times;
+        img.lightbox-img
+
+      .toast-container
+              
+    
+    script(src="https://unpkg.com/tippy.js@2.3.0/dist/tippy.all.min.js")
+    script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/he.js")  
+    script(src="/js/global.js")
+    script(src="/js/manage.js")
+      
+
+      

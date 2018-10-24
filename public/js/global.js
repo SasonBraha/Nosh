@@ -1,0 +1,2 @@
+"use strict";// Toasts
+const toastContainer=document.querySelector(".toast-container"),toast=(a,b)=>{const c=document.createElement("div");c.className=`toast ${a}`,c.textContent=b,toastContainer.appendChild(c),setTimeout(()=>c.remove(),4500)};

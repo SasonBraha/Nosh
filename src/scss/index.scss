@@ -1,0 +1,280 @@
+@import 'abstract/variables';
+
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/animations';
+
+@import 'components/toast';
+@import 'components/form';
+@import 'components/container'; 
+@import 'components/overlay';
+
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0);
+  border: .4rem solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.589);
+  border: .2rem solid rgb(0, 0, 0);
+}
+
+// Header
+.header {
+  position: fixed;
+  line-height: 4rem;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  text-align: center;
+
+  &__logo,
+  &__social {
+    display: inline-block;
+  }
+
+  &__logo {
+    color: white;
+    font-family: 'Cookie', sans-serif;
+    font-size: 3rem;
+    padding: .5rem;
+  }
+
+  &__social {
+    transform: translateY(-.15rem);
+
+    a {
+      color: white;
+    }
+  }
+}
+
+// Hero
+.hero {
+  background: url('/images/hero.jpg') no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  position: relative;
+
+  &__header {
+    margin-top: -12%;
+    text-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.8);
+    color: #fff;
+
+    &--primary {
+      display: block;
+      font-size: 4.5rem;
+      animation: moveDown 1s;
+      animation-fill-mode: backwards;
+      font-weight: 400;
+      letter-spacing: .3rem;
+      font-family: 'Rubik', sans-serif;
+      text-align: center;
+    }
+
+    &--sub {
+      display: block;
+      font-size: 2rem;
+      letter-spacing: .2rem;
+      font-weight: 400;
+      animation: moveUp 1s;
+      animation-fill-mode: backwards;
+    }
+  }
+
+  &__explore-box {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &__explore-btn {
+    display: inline-block;
+    padding: 1.5rem 3.5rem;
+    color: #fff;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.2);
+    transition: .3s;
+    font-size: 1.3rem;
+    animation: moveUp 1s ease-out .5s;
+    animation-fill-mode: backwards;
+    position: relative;
+    outline: none;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: .2s;
+    }
+
+    &:hover {
+      box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.5);
+      transform: translateY(-8px);
+
+      &::after {
+        transform: scaleX(1.5) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+
+    &:active {
+      box-shadow: 0 .3rem 1rem rgba(0, 0, 0, 0.5);
+      transform: translateY(-3px);
+    }    
+  }
+
+  
+}
+
+// Products
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.3rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product {
+    padding: 1rem;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+    font-family: 'Varela Round', sans-serif;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-1rem);
+
+      &__img {
+        transform: scale(1.025);
+      }
+    }
+
+    & > * {
+      pointer-events: none;
+    }
+
+    &__img {
+      max-width: 100%;
+      transition: .8s;
+      border-radius: .5rem;
+    }
+
+    &__name {
+      font-weight: bold;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+// Contact Card
+.contact-card {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  background: white;
+  box-shadow: 0 0 1.4rem 0 rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  border-radius: .8rem;
+  background: #fff;
+  transition: 1s;
+  font-family: 'Varela Round', sans-serif;
+
+  &__logo {
+    font-family: 'Cookie', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: .5rem;
+  }
+
+  &__img {
+    opacity: 1;
+    transition: 0.8s;
+  }
+
+  &__info {
+    width: 100%;
+    text-align: right;
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    span {
+      font-weight: bold;
+    }
+
+    &--contact-us {
+      padding: .5rem;
+      background: #282828;
+      color: white;
+      text-align: center;
+      border-radius: .4rem;
+      cursor: pointer;
+      transition: .3s;
+      border: 0.1rem solid #282828;
+
+      &:hover {
+        color: #282828;
+        background: #fff;
+      }
+    }
+  }
+}
+
+// Media Queries
+@media (max-width:768px) {
+  .main {
+    height: 97.5vh;
+  }
+  .heading-primary-main {
+    font-size: 3.5rem;
+  }
+  .heading-primary-sub {
+    font-size: 1.4rem;
+  }
+  .products {
+    grid-template-columns: 1fr;
+  }
+  .contact-card {
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+
+
+

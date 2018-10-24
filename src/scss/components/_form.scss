@@ -1,0 +1,160 @@
+.form-container {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+
+  .heading {
+    text-align: center;
+
+    h2, h3, h4 {
+      font-size: 2.5rem;
+      line-height: 1.3;
+      letter-spacing: -.1rem;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-weight: normal;
+
+      &::after {
+        content: '';
+        display: block;
+        margin: .7rem auto 0 auto;
+        width: 73%;
+        height: .2rem;
+        background: $mainColor;
+      }
+    }
+  }
+
+  .row {
+    position: relative;
+    padding: 0 1rem;
+    margin-top: 2.2rem;
+  }
+
+  input,
+  textarea {
+    border: none;
+    border-bottom: 2px solid #d4d4d4;
+    color: #282828;
+    padding: 8px 4px;
+    outline: none;
+    transition: .3s;
+    width: 100%;
+    font-size: 15px;
+
+    &[type=file] {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+
+    &:focus, &:valid {
+      border-color: $mainColor;
+
+      &~.text-label {
+        font-size: 14px;
+        top: -18px;
+      }
+
+      &~.icon, &~.text-label {
+        color: $mainColor;
+      }
+    }
+  }
+  
+  textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  .file-label {
+    width: 100%;
+    padding: .7rem .2rem;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: .3s;
+    background: white;
+    border: .1rem dashed $mainColor;
+    color: $mainColor;
+    display: block;
+    text-align: center;
+    border-radius: 3px;
+
+    &:hover {
+      color: white;
+      background: $mainColor;
+      border-color: white;
+    }
+  }
+
+  .preview {
+    width: 100%;
+    max-height: 100px;
+    margin: 0 auto;
+    overflow: auto;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+
+    img {
+      max-height: 100px;
+      max-width: 100px;
+    }
+  }
+
+  .text-label {
+    position: absolute;
+    -webkit-transition: .25s;
+    transition: .25s;
+    cursor: text;
+    user-select: none;
+    color: #888;
+    right: 1.1rem;
+    top: .6rem;
+  }
+
+  .icon {
+    position: absolute;
+    transition: .3s;
+    left: 1.2rem;
+    top: .8rem;
+  }
+
+  button {
+    border: 1px solid $mainColor;
+    border-radius: 5px;
+    padding: 7px 40px;
+    color: white;
+    background: $mainColor;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    margin: 20px auto 0 auto;
+    display: block;
+    outline: none;
+
+    &:hover {
+      color: $mainColor;
+      background: white;
+      border-color: $mainColor;
+      padding: 7px 70px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background: #ececec;
+      color: #676767;
+      border-color: #676767;
+    }
+
+    .loading {
+      position: relative;
+      top: .95px;
+    }
+  }
+}
+
